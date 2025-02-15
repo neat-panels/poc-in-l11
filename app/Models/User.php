@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-final class User extends Authenticatable
+final class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -34,6 +36,15 @@ final class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    /**
+     * Determine if the user has verified their email address.
+     */
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // TODO: Implement canAccessPanel() method. https://filamentphp.com/docs/2.x/admin/users#authorizing-access-to-the-admin-panel
+        return true;
+    }
 
     /**
      * Get the attributes that should be cast.

@@ -18,7 +18,7 @@ pest()->extend(Tests\TestCase::class)
     ->beforeEach(function (): void {
         $this->freezeTime();
     })
-    ->in('Feature', 'Unit');
+    ->in('Integration', 'Unit');
 
 /*
 |--------------------------------------------------------------------------

@@ -17,6 +17,7 @@ arch('avoid mutation')
     ->classes()
     ->toBeReadonly()
     ->ignoring([
+        'App\Filament',
         'App\Exceptions',
         'App\Jobs',
         'App\Models',
@@ -29,6 +30,7 @@ arch('avoid inheritance')
     ->classes()
     ->toExtendNothing()
     ->ignoring([
+        'App\Filament',
         'App\Models',
         'App\Exceptions',
         'App\Jobs',
@@ -62,6 +64,7 @@ arch('models')
     ->expect('App\Models')
     ->toHaveMethod('casts')
     ->toOnlyBeUsedIn([
+        'App\Filament',
         'App\Http',
         'App\Jobs',
         'App\Models',
@@ -75,3 +78,7 @@ arch('models')
 arch('actions')
     ->expect('App\Actions')
     ->toHaveMethod('handle');
+
+arch('user is filament user')
+    ->expect(App\Models\User::class)
+    ->toImplement(Filament\Models\Contracts\FilamentUser::class);
