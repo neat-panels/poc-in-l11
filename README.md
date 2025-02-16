@@ -1,3 +1,5 @@
+[![Tests](https://github.com/neat-panels/poc-in-l11/actions/workflows/tests.yml/badge.svg)](https://github.com/neat-panels/poc-in-l11/actions/workflows/tests.yml)
+
 ```cli
 npm install && npm run build
 composer run dev
